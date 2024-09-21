@@ -32,15 +32,21 @@ const Navbar = () => {
             <div className='flex justify-between items-center'>
                 {session.data?.user &&
                     <div className='flex justify-between items-center'>
-                        <button onClick={() => signOut()} type="button" className="text-white focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Log out</button>
+                        <button
+                            onClick={() => signOut({ callbackUrl: '/' })}
+                            type="button"
+                            className="text-white focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+                        >
+                            Log out
+                        </button>
+
                         <img src={session.data?.user?.image ?? ""} className='rounded-full' height={30} width={30} alt="" />
                     </div>
                 }
                 {!session.data?.user && <>
-
-                    <button onClick={() => { console.log('hiii'); signIn() }} type="button" className="text-white focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Sign in</button>
+                    <button onClick={() => signIn(undefined, { callbackUrl: '/dashboard' })} type="button" className="text-white focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Sign in</button>
                     <button
-                        onClick={() => { signIn() }}
+                        onClick={() => signIn(undefined, { callbackUrl: '/dashboard' })}
                         type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Sign up</button>
                 </>}
             </div>

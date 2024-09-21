@@ -6,8 +6,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="bg-[#151719] h-full w-full">
-      <Navbar />
+    <div className="h-full w-full">
       <Hero />
       <VideoSection />
       <div className="pt-20"> 

@@ -1,9 +1,12 @@
+"use client"
+import { useSession } from 'next-auth/react'
 import React from 'react'
 
 const Dashboard = () => {
+    const session = useSession()
     return (
         <div>
-            hi from dashboard.
+            {JSON.stringify(session.data?.user)}
         </div>
     )
 }
